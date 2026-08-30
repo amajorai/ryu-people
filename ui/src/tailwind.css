@@ -1,0 +1,380 @@
+/* People uses the shared Ryu app grammar. Domain layout only lives here. */
+@import "tailwindcss";
+@import "@ryu/ui/app-ui.css";
+@source "./";
+@source "../../../../packages/blocks/src/companion";
+@source "../../../../packages/ui/src/components/badge.tsx";
+@source "../../../../packages/ui/src/components/button.tsx";
+@source "../../../../packages/ui/src/components/dialog.tsx";
+@source "../../../../packages/ui/src/components/empty.tsx";
+@source "../../../../packages/ui/src/components/input.tsx";
+@source "../../../../packages/ui/src/components/label.tsx";
+@source "../../../../packages/ui/src/components/native-select.tsx";
+@source "../../../../packages/ui/src/components/textarea.tsx";
+
+html,
+body,
+#ryu-plugin-root {
+	height: 100%;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	overflow: hidden;
+	font-family: var(--font-sans);
+	font-size: 14px;
+	color: var(--foreground);
+	background: var(--background);
+}
+
+*,
+button,
+input,
+select,
+textarea {
+	border-color: var(--border);
+}
+
+.people-root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 0;
+	overflow: auto;
+	background: var(--background);
+}
+
+.people-main {
+	gap: 1rem;
+	width: 100%;
+	max-width: 1440px;
+	padding: 1rem;
+	margin-inline: auto;
+}
+
+.people-overview {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-overview h2 {
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.people-overview p,
+.people-muted {
+	color: var(--muted-foreground);
+}
+
+.people-overview p {
+	margin-top: 0.25rem;
+	font-size: 0.8125rem;
+}
+
+.people-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+	font-size: 0.75rem;
+	color: var(--muted-foreground);
+}
+
+.people-summary strong {
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: var(--foreground);
+}
+
+.people-layout {
+	display: grid;
+	grid-template-columns: 15rem minmax(0, 1fr) 18rem;
+	gap: 1rem;
+	align-items: start;
+	min-height: 0;
+}
+
+.people-panel {
+	min-width: 0;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+}
+
+.people-list {
+	overflow: hidden;
+}
+
+.people-list > .ryu-app-section__heading {
+	padding: 0.75rem 0.875rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-filters {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0.25rem;
+	padding: 0.5rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-filters [data-slot="native-select-wrapper"],
+.people-filters [data-slot="native-select"] {
+	width: 100%;
+}
+
+.people-listbox {
+	max-height: 28rem;
+	overflow-y: auto;
+}
+
+.people-listbox .ryu-app-list__item {
+	padding: 0.65rem 0.75rem;
+}
+
+.people-detail {
+	padding: 1rem;
+}
+
+.people-detail-heading,
+.people-section-heading {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.people-detail-heading h2 {
+	margin-top: 0.25rem;
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+.people-detail-heading p:last-child {
+	margin-top: 0.25rem;
+	font-size: 0.8125rem;
+}
+
+.people-label {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	color: var(--muted-foreground);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.people-detail-meta {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin-top: 1rem;
+	border-top: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+}
+
+.people-detail-meta > div {
+	min-width: 0;
+	padding: 0.75rem 0.5rem;
+}
+
+.people-detail-meta > div + div {
+	border-left: 1px solid var(--border);
+}
+
+.people-detail-meta strong {
+	display: block;
+	margin-top: 0.35rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.people-onboarding {
+	padding-top: 1rem;
+}
+
+.people-section-heading h3 {
+	font-size: 0.9375rem;
+	font-weight: 600;
+}
+
+.people-section-heading p {
+	margin-top: 0.25rem;
+	font-size: 0.75rem;
+}
+
+.people-step-list {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.75rem;
+	border-top: 1px solid var(--border);
+}
+
+.people-step {
+	display: flex;
+	gap: 0.65rem;
+	align-items: center;
+	padding: 0.7rem 0.25rem;
+	font-size: 0.8125rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-step > input {
+	flex: 0 0 auto;
+	accent-color: var(--primary);
+}
+
+.people-step > input:checked + span {
+	color: var(--muted-foreground);
+	text-decoration: line-through;
+}
+
+.people-empty-steps {
+	padding: 1rem 0;
+	font-size: 0.75rem;
+	color: var(--muted-foreground);
+}
+
+.people-notes {
+	padding-top: 1rem;
+	margin-top: 1rem;
+	border-top: 1px solid var(--border);
+}
+
+.people-notes > p:last-child {
+	margin-top: 0.35rem;
+	font-size: 0.8125rem;
+	line-height: 1.5;
+	color: var(--muted-foreground);
+}
+
+.people-inspector {
+	position: sticky;
+	top: 0;
+	gap: 0;
+	padding: 1rem;
+	border-left: 1px solid var(--border);
+}
+
+.people-inspector-heading {
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-inspector-heading h2 {
+	margin-top: 0.25rem;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.people-inspector-heading p:last-child {
+	margin-top: 0.35rem;
+	font-size: 0.75rem;
+	line-height: 1.45;
+}
+
+.people-inspector-block {
+	display: grid;
+	gap: 0.75rem;
+	padding: 1rem 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.people-inspector-actions {
+	padding-top: 1rem;
+}
+
+.people-alert {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.625rem 0.75rem;
+	font-size: 0.8125rem;
+	color: var(--destructive);
+	background: color-mix(in oklch, var(--destructive) 8%, var(--card));
+	border: 1px solid color-mix(in oklch, var(--destructive) 25%, var(--border));
+	border-radius: var(--radius);
+}
+
+.people-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.people-form-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.people-form-fields > div {
+	display: grid;
+	gap: 0.375rem;
+}
+
+.people-form-wide {
+	grid-column: 1 / -1;
+}
+
+.people-form-fields label {
+	font-size: 0.8125rem;
+	font-weight: 500;
+}
+
+.people-form-error {
+	font-size: 0.75rem;
+	color: var(--destructive);
+}
+
+.people-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-size: 0.8125rem;
+	color: var(--muted-foreground);
+}
+
+@media (max-width: 1100px) {
+	.people-layout {
+		grid-template-columns: 14rem minmax(0, 1fr);
+	}
+
+	.people-inspector {
+		position: static;
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 720px) {
+	.people-overview {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.people-layout,
+	.people-form-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.people-form-wide {
+		grid-column: auto;
+	}
+
+	.people-detail-heading,
+	.people-section-heading {
+		flex-direction: column;
+	}
+}
