@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ryu.people",
+  "version": "0.1.0",
+  "description": "A private local people directory for team roles, onboarding, and leave status. People keeps internal operations on the node and does not replace payroll, recruiting, or an HRIS.",
+  "author": {
+    "name": "Ryu",
+    "url": "https://ryuhq.com"
+  },
+  "homepage": "https://github.com/amajorai/ryu-people",
+  "repository": "https://github.com/amajorai/ryu-people",
+  "keywords": ["people", "hr", "onboarding", "directory", "operations"],
+  "extensions": {
+    "com.ryuhq.ryu": {
+      "id": "@ryu/people",
+      "displayName": "People"
+    }
+  }
+}
