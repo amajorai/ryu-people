@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "package": "people",
+  "scope": "partial",
+  "expectedRows": 4,
+  "selector": {
+    "spec": "e2e/people-workflow.spec.ts",
+    "config": "playwright.config.ts"
+  },
+  "evidenceBoundary": "Current focused Chromium suite passed all three cases with terminal exit 0 (docs/proof/test-coverage-sweep-20260924/parallel/main-merged-people-storage-retry-v1-20261005/run.log and run.exit); root inspected completed creation and retained-record retry screenshots. Actual App and production storage bridge callers verify exact namespaced GET/SET inputs, repeated refusal with zero writes, Retry recovery, existing-record preservation/readback, and empty-state creation. This is controlled browser bridge proof, not whole-app closure or remote host storage delivery. HRIS, payroll and identity integrations remain external.",
+  "assertions": [
+    {
+      "row": {
+        "package": "people",
+        "source_file": "apps-store/people/ui/src/App.tsx",
+        "line": "240",
+        "component": "App",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Retry"
+      },
+      "testTitle": "retries a refused People load and creates a person from the empty-state action",
+      "assertionName": "Retry preserves unread storage without writes on repeated refusal, then restores editing only after a successful read.",
+      "assertionMarker": "Retry keeps editing unavailable until People storage is read without issuing a write."
+    },
+    {
+      "row": {
+        "package": "people",
+        "source_file": "apps-store/people/ui/src/App.tsx",
+        "line": "409",
+        "component": "App",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Add person"
+      },
+      "testTitle": "retries a refused People load and creates a person from the empty-state action",
+      "assertionName": "Empty-state Add person opens the form and writes the normalized record to host storage.",
+      "assertionMarker": "The empty-state Add person action opens the form and writes a complete person record."
+    },
+    {
+      "row": {
+        "package": "people",
+        "source_file": "apps-store/people/ui/src/App.tsx",
+        "line": "457",
+        "component": "App",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "updates onboarding and adds a local directory record",
+      "assertionName": "The inspector Team input updates the selected person and persists the exact value.",
+      "assertionMarker": "Person team field persists the exact team edit in the local People record."
+    },
+    {
+      "row": {
+        "package": "people",
+        "source_file": "apps-store/people/ui/src/App.tsx",
+        "line": "468",
+        "component": "App",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "updates onboarding and adds a local directory record",
+      "assertionName": "The inspector Start date input updates the selected person and persists the exact date.",
+      "assertionMarker": "Person start date field persists the exact date edit in the local People record."
+    }
+  ]
+}
